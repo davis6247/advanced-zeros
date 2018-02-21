@@ -1,7 +1,8 @@
- module.exports =  function getZerosCount(number, base){
+module.exports = function getZerosCount(number, base){  
   
-  var  divisionCount,zeros,num,possibleZeros = number;;  
-  
+  var  divisionCount,num,possibleZeros = number;; 
+  var zeros = number;
+
   for (var i = 2; i <= base;i++)
   {
     if (base % i == 0)
@@ -15,16 +16,18 @@
       var possibleZeros = 0;
       num = number;
 
-      while (Math.floor(k / i) > 0)
+      while (Math.floor(num / i) > 0)
       {
-        possibleZeros += Math.floor(k / i);
+        possibleZeros += Math.floor(num / i);
         num = Math.floor(num / i);
       }
-      zeros = Math.min (zeros , Math.floor(zeros / divisionCount));
+      zeros = Math.min (zeros , Math.floor(possibleZeros / divisionCount));
     }
 }        
   return zeros;
 }
+
+//console.log(getZerosCount(61518152, 62));
 
 //fisrt attempt
 // module.exports = function getZerosCount(number, base) { 
